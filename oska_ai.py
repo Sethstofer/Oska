@@ -6,10 +6,10 @@ import sys
 """
 oskaplayer(board, player, limit)
 [Explanation:]
-using a form of minimax algorithm, takes a `board`, the MAX `player`, and the
+Using a form of minimax algorithm, takes a `board`, the MAX `player`, and the
 depth (`limit`) of search allowed and outputs best move available to the player
 [returns:]
-a list of strings representing next move to make
+A list of strings representing next move to make
 """
 def oska_play(board, player, limit):
     # uses minimax to search for best option for given player
@@ -26,9 +26,9 @@ def oska_play(board, player, limit):
 """
 display(board)
 [Explanation:]
-displays the `board` in an intuitive manner
+Displays the `board` in an intuitive manner
 [returns:]
-a string representing the board
+A string representing the board
 """
 def display(board):
     display = ''
@@ -63,11 +63,11 @@ def display(board):
 """
 max(board, player, limit)
 [Explanation:]
-max function of the minimax algorithm; generates moves from a board,
+Max function of the minimax algorithm; generates moves from a board,
 evaluates it if it's a leaf node or a winning move, and then returns
 a pair of the board and its value that was the most among them
 [returns:]
-a list comprised of the board (list of strings) of the best move and
+A list comprised of the board (list of strings) of the best move and
 its evaluation value
 """
 def max(board, player, limit):
@@ -108,11 +108,11 @@ def max(board, player, limit):
 """
 min(board, opponent, limit)
 [Explanation:]
-min function of the minimax algorithm; generates moves from a board,
+Min function of the minimax algorithm; generates moves from a board,
 evaluates it if it's a leaf node or a winning move, and then returns
 a pair of the board and its value that was the least among them
 [returns:]
-a list comprised of the board (list of strings) of the best move and
+A list comprised of the board (list of strings) of the best move and
 its evaluation value
 """
 def min(board, opponent, limit):
@@ -152,9 +152,9 @@ def min(board, opponent, limit):
 """
 eval(board)
 [Explanation:]
-evaluates given board based on rules of game & decided heuristics
+Evaluates given board based on rules of game & decided heuristics
 [returns:]
-integer value representing evaluation of board
+Integer value representing evaluation of board
 """
 def eval(board):
     wleft = 0
@@ -242,10 +242,10 @@ def eval(board):
 """
 movegen(str_board, next_player)
 [Explanation:]
-generates possible moves (slides and captures) for the given next player
+Generates possible moves (slides and captures) for the given next player
 with the given current board
 [returns:]
-a list of lists of strings
+A list of lists of strings
 """
 def movegen(str_board, next_player):
     n = len(str_board[0])
@@ -369,10 +369,10 @@ def movegen(str_board, next_player):
 """
 jumble(moves)
 [Explanation:]
-takes moves and places them in arbitrary locations in list to give equal
+Takes moves and places them in arbitrary locations in list to give equal
 evals a chance to be picked
 [returns:]
-a list representing possible moves
+A list representing possible moves
 """
 def jumble(moves):
     moves_left = deepcopy(moves)
@@ -389,9 +389,9 @@ def jumble(moves):
 """
 strsToLists(board)
 [Explanation:]
-takes original board representation and changes it to a list of lists
+Takes original board representation and changes it to a list of lists
 [returns:]
-list of lists
+List of lists
 """
 def strsToLists(board):
     listboard = []
@@ -403,10 +403,10 @@ def strsToLists(board):
 """
 listsToStrs(listboard)
 [Explanation:]
-takes lists of lists representation and changes it back to
+Takes lists of lists representation and changes it back to
 original string representation
 [returns:]
-list of strings
+List of strings
 """
 def listsToStrs(listboard):
     board = []
@@ -421,9 +421,9 @@ def listsToStrs(listboard):
 """
 reverse(st)
 [Explanation:]
-simple function that reverses the items in something
+Simple function that reverses the items in something
 [returns:]
-the reverse of what was passed
+The reverse of what was passed
 """
 def reverse(st):
   return st[::-1]

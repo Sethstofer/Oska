@@ -2,7 +2,7 @@ from subprocess import call
 import os
 from time import sleep
 from copy import deepcopy
-from oska import oska_play, display, movegen, listsToStrs, strsToLists
+from oska_ai import oska_play, display, movegen, listsToStrs, strsToLists
 
 def clear():
     _ = call('clear' if os.name == 'posix' else 'cls')
@@ -20,6 +20,13 @@ def display_title():
     return
 
 
+"""
+title_screen()
+[Explanation:]
+Title screen visual and user input handling
+[returns:]
+Nothing
+"""
 def title_screen():
     while True:
         display_title()
@@ -77,6 +84,13 @@ def endgame_example():
     return
 
 
+"""
+how_to_play_screen()
+[Explanation:]
+"How To" visual and user input handling
+[returns:]
+Nothing
+"""
 def how_to_play_screen():
     option = 0
     while True:
@@ -135,6 +149,13 @@ def display_tie():
     return
 
 
+"""
+game_over_screen(result)
+[Explanation:]
+Game over screen visual and user input handling
+[returns:]
+Nothing
+"""
 def game_over_screen(result):
     sleep(2.0)
     while True:
@@ -157,6 +178,13 @@ def game_over_screen(result):
     return
 
 
+"""
+choose_side()
+[Explanation:]
+Allows selection of which side to play as
+[returns:]
+A list of two characters representing player and opponent
+"""
 def choose_side():
     player = ''
     opponent = ''
@@ -178,6 +206,16 @@ def choose_side():
     return player, opponent
 
 
+"""
+choice_confirmation(player, choice, board)
+[Explanation:]
+Confirms player choice of piece selected
+[returns:]
+A list:
+[0] 0 or 1 for yes or no
+[1] i, indexing variable for the piece selected
+[2] j, indexing variable for the piece selected
+"""
 def choice_confirmation(player, choice, board):
     list_board = strsToLists(board)
     n = len(board[0])
@@ -235,6 +273,15 @@ def choose_move(moves):
                 clear()
 
 
+"""
+player_move(player, board)
+[Explanation:]
+Provides the player with choice of which piece to move,
+then inquires as to which move they want to make with
+said piece
+[returns:]
+Chosen move as a list of strings
+"""
 def player_move(player, board):
     # board should be displayed from prior move
     # determine how many options player has
@@ -245,6 +292,7 @@ def player_move(player, board):
             if board[i][j] == player:
                 options += 1
 
+    # determine available moves
     possible_moves = movegen(board, player)
     if options > 1:
         while True:
@@ -264,10 +312,11 @@ def player_move(player, board):
             if (user_input <= options) and (user_input > 0):
                 clear()
                 ret, i, j = choice_confirmation(player, user_input, board)
-                # if you want to go back, restart loop
+                # if player wants to go back, restart loop
                 if ret == 1:
                     display(board)
                     continue
+                # only consider moves for the selected piece
                 moves = [x for x in possible_moves if x[i][j] == '-']
                 if moves == []:
                     print("NO MOVES AVAILABLE FOR THAT PIECE")
@@ -283,6 +332,14 @@ def player_move(player, board):
         return choose_move(possible_moves)
 
 
+"""
+play_oska()
+[Explanation:]
+The main logic for the program, it pieces together all player
+interaction for the game to run
+[returns:]
+nothing
+"""
 def play_oska():
     title_screen()
     player, opponent = choose_side()
